@@ -1,0 +1,44 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "build",
+            "command": "D:/Program Files/MSYS2/ucrt64/bin/g++.exe",
+            "args": [
+                    "-Iinclude",
+                    "src/main.cpp",
+                    "-std=c++23",
+                    "-g",
+                    "-o",
+                    "${workspaceFolder}/run.exe",
+                    "-L", "D:/Program Files/MSYS2/ucrt64/lib",
+                    "-llapacke",
+                    "-llapack",
+                    "-lblas",
+                    "-Wl,--stack,16777216"
+                ],
+
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Compile all sources to run.exe",
+            "presentation": {
+                "reveal": "silent"
+            }
+        },
+        {
+            "label": "wait-for-exe",
+            "type": "shell",
+            "command": "timeout /t 1 > nul",
+            "problemMatcher": ["$gcc"]
+        }
+    ]
+}
